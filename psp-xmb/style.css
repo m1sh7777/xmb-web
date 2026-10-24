@@ -1,0 +1,54 @@
+:root {
+  color-scheme: dark;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  --theme: #07559e;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; height: 100dvh; overflow: hidden; background: var(--theme); transition: background-color .6s; }
+body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(145deg, #000025dd, transparent 70%), linear-gradient(180deg, #00132b55, transparent 45%, #7be5ed55); pointer-events: none; }
+button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; }
+button:focus-visible { outline: 1px solid #fff; outline-offset: 3px; }
+[hidden] { display: none !important; }
+#waves { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+#viewport { position: fixed; top: env(safe-area-inset-top, 0px); right: env(safe-area-inset-right, 0px); left: env(safe-area-inset-left, 0px); height: calc(100dvh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); overflow: hidden; }
+#console { position: absolute; left: 50%; top: 50%; width: 480px; height: 272px; transform: translate(-50%, -50%) scale(var(--scale, 1)); text-shadow: 1px 1px 2px #00172c99; }
+header { position: absolute; top: 7px; right: 12px; font-size: 12px; font-variant-numeric: tabular-nums; }
+#home { position: absolute; inset: 0; overflow: hidden; touch-action: none; }
+#categories { position: absolute; top: 48px; left: 69px; display: flex; width: max-content; transition: transform .2s cubic-bezier(.2,.7,.3,1); }
+.category { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; width: 82px; height: 64px; padding: 0; opacity: .55; transition: opacity .18s; }
+.category svg { width: 48px; height: 48px; flex-shrink: 0; transform: scale(.82); transition: transform .18s; }
+.category span { font-size: 11px; opacity: 0; transition: opacity .18s; }
+.category.active { opacity: 1; }
+.category.active svg { transform: scale(1); filter: drop-shadow(0 0 2px #fff6); }
+.category.active span { opacity: 1; }
+#menu { position: absolute; inset: 0 12px 30px 86px; pointer-events: none; }
+.menu-item { position: absolute; top: 0; left: 0; display: flex; align-items: center; gap: 15px; width: 100%; height: 48px; padding: 0; text-align: left; opacity: .3; transition: transform .2s cubic-bezier(.2,.7,.3,1), opacity .18s; pointer-events: auto; }
+.menu-item svg { width: 48px; height: 48px; flex-shrink: 0; transform: scale(.8); transition: transform .18s; }
+.menu-item span { font-size: 14px; }
+.menu-item.active { opacity: 1; }
+.menu-item.active svg { transform: scale(1); filter: drop-shadow(0 0 2px #fff5); }
+.menu-item.active:focus-visible { outline: none; }
+.menu-item.active:focus-visible span { text-decoration: underline; text-underline-offset: 4px; }
+svg { fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+footer { position: absolute; left: 24px; bottom: 0; display: flex; gap: 12px; }
+footer button { min-height: 36px; padding: 0; font-size: 9px; opacity: .75; }
+footer span { margin-right: 4px; font-size: 18px; vertical-align: middle; }
+#panel { position: absolute; inset: 55px 32px 42px 86px; overflow-y: auto; scrollbar-width: thin; }
+#panel h1 { font-size: 18px; font-weight: normal; margin: 0 0 14px; }
+#panel p { font-size: 12px; line-height: 1.65; margin: 0 0 16px; opacity: .8; }
+#themes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.theme { display: flex; align-items: center; gap: 8px; min-height: 32px; padding: 6px 8px; border: 1px solid #ffffff44; font-size: 11px; text-align: left; }
+.theme::before { content: ''; width: 12px; height: 12px; flex-shrink: 0; background: var(--swatch); border: 1px solid #ffffff66; }
+.theme[aria-pressed=true] { border-color: #fff; background: #ffffff12; }
+#rotate { display: none; }
+@media (hover: none) and (pointer: coarse) and (orientation: portrait) {
+  #viewport { visibility: hidden; }
+  #rotate { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 24px; }
+  #rotate p { font-size: 19px; margin: 0 0 12px; }
+  #rotate small { font-size: 13px; opacity: .65; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, body { transition: none !important; }
+}
