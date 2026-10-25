@@ -2,7 +2,8 @@
 
 A faithful recreation of the PSP's XrossMediaBar (XMB) in a web browser. It has the original PSP style menu, moving wave background, music player, photo viewer, video playback and a few other features.
 
-**demo:**
+**demo:**https://xmbweb.vercel.app/
+Use landscape on mobile.
 
 ![PSP XMB](assets/screenshot.png)
 
